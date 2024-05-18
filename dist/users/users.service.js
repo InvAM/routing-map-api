@@ -25,6 +25,22 @@ let UsersService = class UsersService {
         const newUser = this.userRepository.create(user);
         return this.userRepository.save(newUser);
     }
+    getUsers() {
+        return this.userRepository.find();
+    }
+    getUser(id) {
+        return this.userRepository.findOne({
+            where: {
+                id
+            }
+        });
+    }
+    deleteUser(id) {
+        return this.userRepository.delete({ id });
+    }
+    updateUser(id, user) {
+        return this.userRepository.update({ id }, user);
+    }
 };
 exports.UsersService = UsersService;
 exports.UsersService = UsersService = __decorate([
