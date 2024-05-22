@@ -1,14 +1,15 @@
 import { Student } from "src/student/student.entity";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity({name:'habilidadesProgramacion'})
-export class HabilidadesProgramacion{
+@Entity({name: 'nivelAcademico'})
+export class NivelAcademico{
     @PrimaryGeneratedColumn()
     id: number
 
     @Column()
-    habilidades: string
+    name: String
 
-    @ManyToOne(() => Student, (student) => student.habilidadProgramacion)
+    @ManyToOne(() => Student, (student) => student.nivelAcademico)
     student: Student
+    
 }

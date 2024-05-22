@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Student } from "src/student/student.entity";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({name: 'condicionEstudiante'})
 export class CondicionEstudiante{
@@ -7,4 +8,7 @@ export class CondicionEstudiante{
 
     @Column()
     condicion: string
+
+    @ManyToOne(() => Student, (student) => student.condicionEstudiante)
+    student: Student
 }

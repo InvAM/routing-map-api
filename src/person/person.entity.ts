@@ -1,5 +1,4 @@
-
-import { TypePerson } from "src/entities/typesPerson.entity";
+import { Student } from "src/student/student.entity";
 import { User } from "src/users/user.entity";
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
@@ -22,8 +21,7 @@ export class Person {
     //Foreign key
     @OneToOne(() => User, (user) => user.person)
     user: User
-    //Foreign key
-    @OneToOne(() => TypePerson)
-    @JoinColumn()
-    type: TypePerson
+
+    @OneToOne(() => Student, (student) => student.person)
+    student: Student
 }
