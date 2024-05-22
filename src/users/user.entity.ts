@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm"
+import { Person } from "src/person/person.entity"
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from "typeorm"
 
 @Entity({name: 'users'})
 export class User {
@@ -16,4 +17,8 @@ export class User {
     
     @Column({nullable: true})
     authStrategy: string
+
+    @OneToOne(() => Person, (person) => person.user)
+    @JoinColumn()
+    person: Person
 }
