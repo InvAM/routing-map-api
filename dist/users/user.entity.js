@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
+const person_entity_1 = require("../person/person.entity");
 const typeorm_1 = require("typeorm");
 let User = class User {
 };
@@ -34,6 +35,11 @@ __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", String)
 ], User.prototype, "authStrategy", void 0);
+__decorate([
+    (0, typeorm_1.OneToOne)(() => person_entity_1.Person, (person) => person.user),
+    (0, typeorm_1.JoinColumn)(),
+    __metadata("design:type", person_entity_1.Person)
+], User.prototype, "person", void 0);
 exports.User = User = __decorate([
     (0, typeorm_1.Entity)({ name: 'users' })
 ], User);
