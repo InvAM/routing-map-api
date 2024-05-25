@@ -1,4 +1,4 @@
-import { Person } from "src/person/person.entity"
+import { Student } from "src/student/student.entity"
 import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from "typeorm"
 
 @Entity({name: 'users'})
@@ -18,7 +18,6 @@ export class User {
     @Column({nullable: true})
     authStrategy: string
 
-    @OneToOne(() => Person, (person) => person.user)
-    @JoinColumn()
-    person: Person
+    @OneToOne(() => Student, (student) => student.user)
+    student: Student
 }

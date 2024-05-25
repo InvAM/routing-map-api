@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { PersonModule } from './person/person.module';
+//import { PersonModule } from './person/person.module';
 import { StudentModule } from './student/student.module';
 
 
@@ -23,7 +23,6 @@ import { StudentModule } from './student/student.module';
       }
     }),
     UsersModule,
-    PersonModule,
     StudentModule,
   ],
   controllers: [AppController],

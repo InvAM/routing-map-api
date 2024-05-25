@@ -1,5 +1,5 @@
 
-export class UpdatePersonDto{
+export class UpdateStudentDto{
     name?: string
     lastname?: string
     dni?: string

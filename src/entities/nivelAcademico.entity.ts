@@ -1,5 +1,5 @@
 import { Student } from "src/student/student.entity";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({name: 'nivelAcademico'})
 export class NivelAcademico{
@@ -9,7 +9,7 @@ export class NivelAcademico{
     @Column()
     name: String
 
-    @ManyToOne(() => Student, (student) => student.nivelAcademico)
-    student: Student
+    @OneToMany(() => Student, (student) => student.nivelAcademico)
+    student: Student[]
     
 }

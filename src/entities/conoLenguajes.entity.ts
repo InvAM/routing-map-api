@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Student } from "src/student/student.entity";
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 
 
 @Entity({name: 'conocimientoLenguajes'})
@@ -8,4 +9,8 @@ export class ConocimientoLenguajes{
 
     @Column()
     lenguaje: string
+
+    @ManyToMany(() => Student, (student) => student.conocimientoLenguajes)
+    student: Student
+    
 }

@@ -1,9 +1,9 @@
-import { Person } from "src/person/person.entity";
+import { Student } from "src/student/student.entity";
 export declare class User {
     id: number;
     username: string;
     password: string;
     createdAt: Date;
     authStrategy: string;
-    person: Person;
+    student: Student;
 }
