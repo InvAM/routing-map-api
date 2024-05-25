@@ -5,9 +5,9 @@ import { HabilidadesMatematicas } from "src/entities/habiMatematicas.entity";
 import { HabilidadesProgramacion } from "src/entities/habiProgramacion.entity";
 import { Intereses } from "src/entities/intereses.entity";
 import { NivelAcademico } from "src/entities/nivelAcademico.entity";
-//import { Person } from "src/person/person.entity";
+import { RutasAprendizaje } from "src/entities/rutasAprendizajes.entity";
 import { User } from "src/users/user.entity";
-import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({name:'students'})
 export class Student {
@@ -36,7 +36,7 @@ export class Student {
     idNivelAcademico: number
 
     @Column()
-    idHabilidadProgramacion: number
+    idHabilidadesProgramacion: number
 
     @Column()
     idHabilidadesMatematicas: number
@@ -47,9 +47,21 @@ export class Student {
     @Column()
     idConocimientoLenguajes: number
 
+    @Column()
+    idHabilidadesBlandas: number
+
+    @Column()
+    idIntereses: number
+
+    @Column()
+    idRutaAprendizaje: number
+
+    @Column()
+    idUser: number
+
     //One to one
     @OneToOne(() => User, (user) => user.student)
-    @JoinColumn()
+    @JoinColumn({name: 'idUser'})
     user: User
 
     //onte to many
@@ -73,28 +85,21 @@ export class Student {
     condicionEstudiante: CondicionEstudiante
 
     //many to many
-    @ManyToMany(() => ConocimientoLenguajes, (conocimientoLenguajes) => conocimientoLenguajes.student)
+    @ManyToOne(() => ConocimientoLenguajes, (conocimientoLenguajes) => conocimientoLenguajes.student)
     @JoinColumn({name: 'idConocimientoLenguajes'})
-    conocimientoLenguajes: ConocimientoLenguajes[] 
-
-    /*
+    conocimientoLenguajes: ConocimientoLenguajes
 
     //many to many
-    @ManyToMany(() => ConocimientoLenguajes)
-    @JoinTable()
-    conocimientoLenguajes: ConocimientoLenguajes[] 
-
+    @ManyToOne(() => HabilidadesBlandas, (habilidadesBlandas) => habilidadesBlandas.student)
+    @JoinColumn({name: 'idHabilidadesBlandas'})
+    habilidadesBlandas: HabilidadesBlandas
     //many to many
-    @ManyToMany(() => HabilidadesBlandas)
-    @JoinTable()
-    habilidadesBlandas: HabilidadesBlandas[]
-    //many to many
-    @ManyToMany(() => Intereses)
-    @JoinTable()
-    intereses: Intereses[] 
+    @ManyToOne(() => Intereses, (intereses) => intereses.student)
+    @JoinColumn({name: 'idIntereses'})
+    intereses: Intereses 
 
-    @Column()
-    rutaAprendizaje: number
-    */
+    @ManyToOne(() => RutasAprendizaje, (rutasAprendizaje) => rutasAprendizaje.student)
+    @JoinColumn({name: 'idRutaAprendizaje'})
+    rutaAprendizaje: RutasAprendizaje
 
 }

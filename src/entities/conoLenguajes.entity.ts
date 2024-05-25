@@ -1,5 +1,5 @@
 import { Student } from "src/student/student.entity";
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 
 @Entity({name: 'conocimientoLenguajes'})
@@ -10,7 +10,7 @@ export class ConocimientoLenguajes{
     @Column()
     lenguaje: string
 
-    @ManyToMany(() => Student, (student) => student.conocimientoLenguajes)
-    student: Student
+    @OneToMany(() => Student, (student) => student.conocimientoLenguajes)
+    student: Student[]
     
 }
