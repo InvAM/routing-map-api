@@ -40,6 +40,7 @@ export class UsersService {
     return this.userRepository.findOneOrFail({
       where: {
         username: username,
+        password: password,
       },
     });
   }
