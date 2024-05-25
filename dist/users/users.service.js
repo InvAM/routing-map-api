@@ -31,8 +31,8 @@ let UsersService = class UsersService {
     getUser(id) {
         return this.userRepository.findOne({
             where: {
-                id
-            }
+                id,
+            },
         });
     }
     deleteUser(id) {
@@ -40,6 +40,14 @@ let UsersService = class UsersService {
     }
     updateUser(id, user) {
         return this.userRepository.update({ id }, user);
+    }
+    validateUsers(username, password) {
+        return this.userRepository.findOneOrFail({
+            where: {
+                username: username,
+                password: password,
+            },
+        });
     }
 };
 exports.UsersService = UsersService;

@@ -10,4 +10,5 @@ export declare class UsersService {
     getUser(id: number): Promise<User>;
     deleteUser(id: number): Promise<import("typeorm").DeleteResult>;
     updateUser(id: number, user: UpdateUserDto): Promise<import("typeorm").UpdateResult>;
+    validateUsers(username: string, password: string): Promise<User>;
 }

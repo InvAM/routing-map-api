@@ -12,7 +12,6 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const users_module_1 = require("./users/users.module");
 const typeorm_1 = require("@nestjs/typeorm");
-const student_module_1 = require("./student/student.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -21,19 +20,19 @@ exports.AppModule = AppModule = __decorate([
         imports: [
             typeorm_1.TypeOrmModule.forRoot({
                 type: 'mssql',
-                host: 'ADRIAN-PC\\SQLEXPRESS',
+                host: 'JYF27',
                 port: 1433,
-                username: 'sa',
-                password: '7raM4rR14',
-                database: 'nestdb',
+                username: 'JYF27',
+                password: '7131',
+                database: 'routingmap',
                 entities: [__dirname + '/**/*.entity{.ts,.js}'],
                 synchronize: true,
                 extra: {
                     trustServerCertificate: true,
-                }
+                    instanceName: 'SQL2022',
+                },
             }),
-            users_module_1.UsersModule,
-            student_module_1.StudentModule,
+            users_module_1.UsersModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

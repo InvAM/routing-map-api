@@ -7,31 +7,41 @@ import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UsersService {
+  constructor(
+    @InjectRepository(User) private userRepository: Repository<User>,
+  ) {}
 
-    constructor(@InjectRepository(User) private userRepository: Repository<User>){}
+  createUser(user: CreateUserDto) {
+    const newUser = this.userRepository.create(user);
+    return this.userRepository.save(newUser);
+  }
 
-    createUser(user: CreateUserDto){
-        const newUser = this.userRepository.create(user)
-        return this.userRepository.save(newUser)
-    }
+  getUsers() {
+    return this.userRepository.find();
+  }
 
-    getUsers(){
-        return this.userRepository.find()
-    }
+  getUser(id: number) {
+    return this.userRepository.findOne({
+      where: {
+        id,
+      },
+    });
+  }
 
-    getUser(id: number){
-        return this.userRepository.findOne({
-            where:{
-                id
-            }
-        })
-    }
+  deleteUser(id: number) {
+    return this.userRepository.delete({ id });
+  }
 
-    deleteUser(id: number){
-        return this.userRepository.delete({ id })
-    }
+  updateUser(id: number, user: UpdateUserDto) {
+    return this.userRepository.update({ id }, user);
+  }
 
-    updateUser(id: number, user:UpdateUserDto){
-        return this.userRepository.update({id}, user)
-    }
+  validateUsers(username: string, password: string) {
+    return this.userRepository.findOneOrFail({
+      where: {
+        username: username,
+        password: password,
+      },
+    });
+  }
 }
