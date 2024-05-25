@@ -1,12 +1,18 @@
-import { NivelAcademico } from "src/entities/nivelAcademico.entity"
-import { User } from "src/users/user.entity"
 
 export class CreateStudentDto{
     name: string
     lastname: string
     dni: string
     age: number
+    participacion: boolean
+    notaPromedio: number
     idNivelAcademico: number
-    idHabilidadProgramacion: number
-    user: User
+    idHabilidadesProgramacion: number
+    idHabilidadesMatematicas: number
+    idCondicionEstudiante: number
+    idConocimientoLenguajes: number
+    idHabilidadesBlandas: number
+    idIntereses: number
+    idRutaAprendizaje: number
+    idUser: number
 }
